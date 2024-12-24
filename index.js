@@ -1,10 +1,13 @@
-// server.js
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
+require('dotenv').config();
+
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(cors());
+
 const candidates = [
   { id: 1, name: 'John Doe', skills: 'React, Node.js', experience: 5 },
   { id: 2, name: 'Jane Smith', skills: 'Python, Django', experience: 3 },
@@ -18,10 +21,11 @@ const candidates = [
   { id: 10, name: 'Olivia Taylor', skills: 'Swift, iOS Development', experience: 4 },
 ];
 
-
 app.get('/api/candidates', (req, res) => {
   res.json(candidates);
 });
+
+
 
 
 app.listen(port, () => {
